@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  namespace: dario
+spec:
+  rules:
+  - host: vanadiel.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: wordpress-deployment
+            port:
+              number: 80
+  ingressClassName: nginx
